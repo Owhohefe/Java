@@ -61,7 +61,7 @@ public class UserInterface {
 				public void actionPerformed(ActionEvent arg0) {
 					color1 =JColorChooser.showDialog(null, "Pick Font Color", color1);
 					if (color1==null){
-						color = Color.ORANGE;
+						color1 = Color.ORANGE;
 					}
 					label1.setForeground(color1);
 					label2.setForeground(color1);
