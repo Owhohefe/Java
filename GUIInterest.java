@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -15,6 +18,22 @@ public class GUIInterest {
 	JLabel Label1, Label2, Label3,Label4;
 	
 	GUIInterest(){
+		
+		JMenuBar menubar = new JMenuBar();
+		
+		JMenu MyWork = new JMenu("My Work");
+		
+		JMenuItem GUISwingClassItem = new JMenuItem("GUISwingClass");
+		JMenuItem GUIclassItem = new JMenuItem("GUIclass");
+		JMenuItem GUIInterestItem = new JMenuItem("GUIInterest");
+		JMenuItem GUIPrintAgeItem = new JMenuItem("GUIPrintAge");
+		
+		MyWork.add(GUISwingClassItem);
+		MyWork.add(GUIclassItem);
+		MyWork.add(GUIInterestItem);
+		MyWork.add(GUIPrintAgeItem);
+		
+		menubar.add(MyWork);
 		
 		TextField1 = new JTextField();
 		TextField1.setBounds(90, 10, 110, 20);
@@ -40,7 +59,7 @@ public class GUIInterest {
 		btn.setBounds(90, 130, 110, 20);
 		
 		myFrame.setLayout(null);
-		myFrame.setSize(230, 200);
+		myFrame.setSize(350, 250);
 		myFrame.setVisible(true);
 		
 		myFrame.add(TextField1);
@@ -52,6 +71,7 @@ public class GUIInterest {
 		myFrame.add(TextField4);
 		myFrame.add(Label4);
 		myFrame.add(btn);
+		myFrame.setJMenuBar(menubar);
 		
 		btn.addActionListener(new ActionListener() {
 			
@@ -66,7 +86,7 @@ public class GUIInterest {
 			*/
 				
 			int i =0;
-			do{
+			//do{
 				try{
 					float P = Float.valueOf(TextField1.getText());
 					float R = Float.valueOf(TextField2.getText());
@@ -76,14 +96,50 @@ public class GUIInterest {
 					i=1;
 				}catch(Exception e){
 					JOptionPane.showMessageDialog(null, "You have to enter Principal, Rate and Time");
-					float P = Float.valueOf(TextField1.getText());
+					/*float P = Float.valueOf(TextField1.getText());
 					float R = Float.valueOf(TextField2.getText());
 					float T = Float.valueOf(TextField3.getText());
 					
-					CalcInterest(P, R, T);
+					CalcInterest(P, R, T);*/
 				}
-		}while(i==0);
+		//}while(i==0);
 			
+			}
+		});
+		
+		GUIInterestItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new GUIInterest();
+				
+			}
+		});
+		
+		GUISwingClassItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new GUISwingClass();
+				myFrame.setVisible(false);
+			}
+		});
+		
+		GUIPrintAgeItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new GUIPrintAge();
+				myFrame.setVisible(false);
+			}
+		});
+		
+		GUIclassItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new GUIclass();
+				myFrame.setVisible(false);
 			}
 		});
 	}

@@ -1,6 +1,9 @@
 import java.awt.Button;
 import java.awt.Frame;
 import java.awt.Label;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +19,24 @@ public class GUIPrintAge {
 	Label Label1, Label2, Label3;
 	
 	GUIPrintAge(){
+		
+		MenuBar menubar = new MenuBar();
+		
+		Menu MyWork = new Menu("My Work"); 
+		
+		MenuItem GUISwingClassItem = new MenuItem("GUISwingClass");
+		MenuItem GUIclassItem = new MenuItem("GUIclass");
+		MenuItem GUIInterestItem = new MenuItem("GUIInterest");
+		MenuItem GUIPrintAgeItem = new MenuItem("GUIPrintAge");
+		
+		MyWork.add(GUISwingClassItem);
+		MyWork.add(GUIclassItem);
+		MyWork.add(GUIInterestItem);
+		MyWork.add(GUIPrintAgeItem);
+		
+		menubar.add(MyWork);
+		
+		
 		TextField1 = new TextField();
 		TextField1.setBounds(120, 50, 100, 20);
 		Label1 = new Label("BIRTH YEAR");
@@ -51,7 +72,9 @@ public class GUIPrintAge {
 		myFrame.add(TextField3);
 		myFrame.add(Label3);
 		myFrame.add(btn);
+		myFrame.setMenuBar(menubar);
 		
+	
 		btn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -75,6 +98,42 @@ public class GUIPrintAge {
 			}while(i==0);
 			
 			}	
+		});
+		
+		GUIPrintAgeItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new GUIPrintAge();
+				
+			}
+		});
+		
+		GUISwingClassItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new GUISwingClass();
+				myFrame.setVisible(false);
+			}
+		});
+		
+		GUIclassItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new GUIclass();
+				myFrame.setVisible(false);
+			}
+		});
+		
+		GUIInterestItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new GUIInterest();
+				myFrame.setVisible(false);
+			}
 		});
 		
 	}
