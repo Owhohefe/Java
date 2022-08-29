@@ -2,14 +2,24 @@
 public class BasePlusCommissionEmployeeTest {
 
 	public static void main(String[] args) {
+		BasePlusCommissionEmployee employee = new BasePlusCommissionEmployee("Efe","Ekpomebe","333-33-3333",6000,0.15,300);
 		
-		EmployeeCommission employee1 = new EmployeeCommission ("Sue", "Jones", "222-22-2222", 10000, .06);
-		BasePlusCommissionEmployee employee =new BasePlusCommissionEmployee("Efe","Ekpomebe","333-444-555-666",10000.00,0.04,1000);
-		EmployeeCommission employee2 = employee;
+		System.out.println("Employee information obtained by get methods: \n");
+		System.out.printf("%s %s\n", "First name is",employee.getFirstName());
+		System.out.printf("%s %s\n", "Last name is",employee.getLastName());
+		System.out.printf("%s %s\n", "Social security number is",employee.getSocialSecurityNumber());
+		System.out.printf("%s %.2f\n", "Gross sales is",employee.getGrossSales());
+		System.out.printf("%s %.2f\n", "Commission rate is",employee.getCommissionRate());
+		System.out.printf("%s %.2f\n", "Base salary is",employee.getBaseSalary());
+		System.out.printf("%s %.2f\n", "Earning is",employee.earnings());
 		
-		System.out.printf("\n\n%s:\n%s\n","This is for the New employee",employee1);
-		System.out.printf("\n\n%s:\n%s\n","This is for the New employee",employee);
-		System.out.printf("\n\n%s:\n%s\n","This is for the New employee",employee2);
+		employee.setGrossSales(500);
+		employee.setCommissionRate(0.1);
+		
+		System.out.printf( "\n%s:\n\n%s\n",
+				"Updated employee information obtained by toString", employee );
+
+
 	}
 
 }

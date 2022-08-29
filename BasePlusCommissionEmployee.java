@@ -1,38 +1,38 @@
 
-public class BasePlusCommissionEmployee extends EmployeeCommission {
-	
+public class BasePlusCommissionEmployee extends CommissionEmployee{
+
 	private double baseSalary;
 	
-	public BasePlusCommissionEmployee(String fn, String ln, String ssn, double gs, double cr, double bs){
-		super(fn, ln, ssn, gs, cr);
-		
-		baseSalary = bs;	
+	public BasePlusCommissionEmployee(String first,String last, String ssn, double sales, double rate, double salary){
+		super(first,last, ssn, sales, rate);
+		setBaseSalary(salary);
 	}
 	
-	public void setBaseSalary(double bs){
-		if(bs>=0.0)
-		baseSalary = bs;
-		else 
-			throw new IllegalArgumentException("Base salary must be greater than or equal to zero");
+	public void setBaseSalary(double salary){
+		if (salary >= 0.0){
+			baseSalary = salary;
+		}else{
+			throw new IllegalArgumentException("Base salary must be >= 0.0");
+		}
 	}
 	
 	public double getBaseSalary(){
 		return baseSalary;
 	}
 	
-@Override
-public double earnings(){
-	return (baseSalary+super.earnings());
-}
+	@Override
+	public double earnings(){
+		return baseSalary + (getCommissionRate() * getGrossSales());
+	}
+	
+	@Override
+	public String toString(){
+		return String.format("%s: %s %s\n%s: %s\n%s: %.2f\n%s: %.2f\n%s: %.2f", 
+				"commission employee", getFirstName(), getLastName(),
+				"social security number", getSocialSecurityNumber(),
+				"gross sales", getGrossSales(),
+				"commission rate", getCommissionRate(),
+				"base salary", baseSalary);
+	}
 
-@Override
-public String toString(){
-return String.format("%s: %s %s\n%s: %s\n%s: %.2f\n%s: %.2f\n%s: %.2f\n%s: %.2f\n",
-		"Employee ",getFirstName(),getLastName(),
-		"Social Security Number",getSSN(),
-		"Gross Sales",getGrossSales(),
-		"Commission Rate",getCommissionRate(),
-		"Base Salary",getBaseSalary(),
-		"Earnings",(baseSalary+(getGrossSales ()*getCommissionRate ())));	
-}
 }

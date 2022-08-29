@@ -2,16 +2,21 @@
 public class InitArray {
 
 	public static void main(String[] args) {
-		int [] array = new int [10];
+		int[]x = new int[10];
 		
-		for(int i = 0; i <array.length; i++)
-			array[i]=2+2*i;
+		int v = 0;
+		
+		for(int i = 2; i<=20; i++){
+			if(i%2==0){
+				x[v]=i;
+				v++;
+			}
+		}
+		
+		System.out.printf("%5s%8s\n","Index","Value");
+		for (int j = 0; j < x.length;j++){
+			System.out.printf("%5s%8s\n",j,x[j]);
 			
-		
-		System.out.println("INDEX\tVALUES");
-		for (int i = 0; i<array.length;i++){
-			System.out.print(i+"\t");
-			System.out.println(array[i]);
 		}
 	}
 

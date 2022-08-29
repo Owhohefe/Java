@@ -1,29 +1,23 @@
-import java.util.Scanner;
 
 public class CommissionEmployeeTest {
 
 	public static void main(String[] args) {
+		CommissionEmployee employee = new CommissionEmployee("Sue","Jones","222-22-2222",10000,.06);
 		
-		CommissionEmployee employee = new CommissionEmployee();
+		System.out.println("Employee information obtained by get methods: \n");
+		System.out.printf("%s %s\n", "First name is",employee.getFirstName());
+		System.out.printf("%s %s\n", "Last name is",employee.getLastName());
+		System.out.printf("%s %s\n", "Social security number is",employee.getSocialSecurityNumber());
+		System.out.printf("%s %.2f\n", "Gross sales is",employee.getGrossSales());
+		System.out.printf("%s %.2f\n", "Commission rate is",employee.getCommissionRate());
+		System.out.printf("%s %.2f\n", "Earning is",employee.earnings());
 		
-		Scanner myScanner = new Scanner (System.in);
-		System.out.println("Enter your first name ");
-		String fn = myScanner.nextLine();
-		System.out.println("Enter your last name ");
-		String ln = myScanner.nextLine();
-		System.out.println("Enter your Social Security Number ");
-		String ssn = myScanner.nextLine();
-		System.out.println("Enter the Gross Sales ");
-		double gs = myScanner.nextDouble();
-		System.out.println("Enter the Commission Rate ");
-		double cr = myScanner.nextDouble();
+		employee.setGrossSales(500);
+		employee.setCommissionRate(0.1);
 		
-		employee.setFirstName(fn);
-		employee.setLastName(ln);
-		employee.setSSN(ssn);
-		employee.setGrossSales(gs);
-		employee.setCommissionRate(cr);
-		
-		System.out.printf("%s: \n\n%s", "The new employee is", employee);
+		System.out.printf( "\n%s:\n\n%s\n",
+				"Updated employee information obtained by toString", employee );
+
 	}
+
 }
